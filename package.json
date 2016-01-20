@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "react-input-autosize": "^0.6.6"
+    "react-input-autosize": "https://github.com/Paveltarno/react-input-autosize"
   },
   "devDependencies": {
     "babel": "^5.8.23",
