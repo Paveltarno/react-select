@@ -3,12 +3,13 @@ import classNames from 'classnames';
 
 const Option = React.createClass({
 	propTypes: {
+		children: React.PropTypes.node,
 		className: React.PropTypes.string,             // className (based on mouse position)
 		isDisabled: React.PropTypes.bool,              // the option is disabled
 		isFocused: React.PropTypes.bool,               // the option is focused
 		isSelected: React.PropTypes.bool,              // the option is selected
-		onSelect: React.PropTypes.func,                // method to handle click on option element
 		onFocus: React.PropTypes.func,                 // method to handle mouseEnter on option element
+		onSelect: React.PropTypes.func,                // method to handle click on option element
 		onUnfocus: React.PropTypes.func,               // method to handle mouseLeave on option element
 		option: React.PropTypes.object.isRequired,     // object that is base for that option
 	},
@@ -30,11 +31,15 @@ const Option = React.createClass({
 		this.props.onSelect(this.props.option, event);
 	},
 	handleMouseEnter (event) {
-		this.props.onFocus(this.props.option, event);
+		this.onFocus(event);
 	},
 	handleMouseMove (event) {
-		if (this.props.focused) return;
-		this.props.onFocus(this.props.option, event);
+		this.onFocus(event);
+	},
+	onFocus (event) {
+		if (!this.props.isFocused) {
+			this.props.onFocus(this.props.option, event);
+		}
 	},
 	render () {
 		var { option } = this.props;
