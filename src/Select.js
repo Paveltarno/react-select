@@ -165,6 +165,7 @@ const Select = React.createClass({
 	blurInput() {
 		if (!this.refs.input) return;
 		this.refs.input.blur();
+	},
 
 	handleTouchMove (event) {
 		// Set a flag that the view is being dragged
